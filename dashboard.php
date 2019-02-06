@@ -1020,7 +1020,7 @@ desired effect
                                                 <div class="row">
                                                     <div class="form-group col-lg-12">                                      
                                                         <div class="pull-right">
-                                                            <a href="" class="btn btn-default">Back</button>
+                                                            <a href="" class="btn btn-default">Back</a>
                                                             <button type="submit" class="btn btn-success">Save</button>
                                                         </div>
                                                     </div>
