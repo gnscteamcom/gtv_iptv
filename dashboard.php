@@ -957,9 +957,7 @@ desired effect
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="box box-solid">
-                                                    <div class="box-header with-border">
-                                                        <h3 class="box-title">Overview</h3>
-                                                    </div><!-- /.box-header -->
+                                                    
                                                     <div class="box-body">
                                                         <form action="actions.php?a=source_update&source_id=<?php echo $source_id; ?>" method="post" class="form-horizontal">
                                                             <div class="row">
