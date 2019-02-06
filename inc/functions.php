@@ -424,13 +424,13 @@ function show_sources($headend_id) {
 					'.($data['status'] == 'online' ? '<font color="green">Online</font>' : '<font color="red">Pffline</font>').'
 				</th>
 				<th>
-					'.$data['type'].'
+					'.ucfirst($data['type']).'
 				</th>
 				<th>
 					'.$data['make'].' / '.$data['model'].'
 				</th>
 				<th>
-					'.$data['assigned_channel'].'
+					'.ucfirst(str_replace("_", " ", $data['assigned_channel'])).'
 				</th>
 				<td class="pull-right">
 					<a title="Overview" class="btn btn-primary btn-flat" href="?c=source&source_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
