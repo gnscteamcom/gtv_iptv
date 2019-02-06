@@ -263,7 +263,7 @@ desired effect
                                                 <tr>
                                                     <th>Headend</th>
                                                     <th>Controller</th>
-                                                    <th>Sources</th>
+                                                    <th width="50px">Sources</th>
                                                     <th width="50px"></th>
                                                 </tr>
                                             </thead>
