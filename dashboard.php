@@ -942,78 +942,84 @@ desired effect
                 
                 <section class="content">
                     <div class="row">
-                        <form action="actions.php?a=source_update&source_id=<?php echo $source_id; ?>" method="post" class="form-horizontal">
-                            <div class="row">
-                                <div class="form-group col-lg-12">
-                                    <label for="name" class="col-lg-3 control-label">Name</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" name="name" id="name" class="form-control" value="<?php echo $source['name']; ?>">
-                                    </div>
-                                </div>
+                        <div class="col-md-12">
+                            <div class="nav-tabs-custom">
+                                <div class="row">
+                                            <form action="actions.php?a=source_update&source_id=<?php echo $source_id; ?>" method="post" class="form-horizontal">
+                                                <div class="row">
+                                                    <div class="form-group col-lg-12">
+                                                        <label for="name" class="col-lg-3 control-label">Name</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="text" name="name" id="name" class="form-control" value="<?php echo $source['name']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name" class="col-lg-3 control-label">Type</label>
+                                                        <div class="col-lg-9">
+                                                            <!-- <input type="text" name="type" id="type" class="form-control" value="<?php echo $source['type']; ?>"> -->
+                                                            <select name="type" id="type" class="form-control" placeholder="United States" required>
+                                                                <option value="" <?php if($source['type']==''){echo'selected';}?>>Select a Type</option>  
+                                                                <option value="streamer" <?php if($source['type']=='streamer'){echo'selected';}?>>Streamer</option>  
+                                                                <option value="capture_card" <?php if($source['type']=='capture_card'){echo'selected';}?>>Capture Card</option>  
+                                                                <option value="tuner_card" <?php if($source['type']=='tuner_card'){echo'selected';}?>>Tuner Card</option>  
+                                                                <option value="stb" <?php if($source['type']=='stb'){echo'selected';}?>>Set Top Box</option> 
+                                                            </select>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name" class="col-lg-3 control-label">Make</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="text" name="make" id="make" class="form-control" value="<?php echo $source['make']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name" class="col-lg-3 control-label">Model</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="text" name="model" id="model" class="form-control" value="<?php echo $source['model']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name" class="col-lg-3 control-label">IP Address</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="text" name="ip_address" id="ip_address" class="form-control" value="<?php echo $source['ip_address']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name" class="col-lg-3 control-label">Hostname</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="text" name="hostname" id="hostname" class="form-control" value="<?php echo $source['hostname']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name" class="col-lg-3 control-label">Channel</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="text" name="channel" id="channel" class="form-control" value="<?php echo $source['channel']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-12">                                      
+                                                        <div class="pull-right">
+                                                            <button type="submit" class="btn btn-success">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="name" class="col-lg-3 control-label">Type</label>
-                                    <div class="col-lg-9">
-                                        <!-- <input type="text" name="type" id="type" class="form-control" value="<?php echo $source['type']; ?>"> -->
-                                        <select name="type" id="type" class="form-control" placeholder="United States" required>
-                                            <option value="" <?php if($source['type']==''){echo'selected';}?>>Select a Type</option>  
-                                            <option value="streamer" <?php if($source['type']=='streamer'){echo'selected';}?>>Streamer</option>  
-                                            <option value="capture_card" <?php if($source['type']=='capture_card'){echo'selected';}?>>Capture Card</option>  
-                                            <option value="tuner_card" <?php if($source['type']=='tuner_card'){echo'selected';}?>>Tuner Card</option>  
-                                            <option value="stb" <?php if($source['type']=='stb'){echo'selected';}?>>Set Top Box</option> 
-                                        </select>   
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="name" class="col-lg-3 control-label">Make</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" name="make" id="make" class="form-control" value="<?php echo $source['make']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="name" class="col-lg-3 control-label">Model</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" name="model" id="model" class="form-control" value="<?php echo $source['model']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="name" class="col-lg-3 control-label">IP Address</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" name="ip_address" id="ip_address" class="form-control" value="<?php echo $source['ip_address']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="name" class="col-lg-3 control-label">Hostname</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" name="hostname" id="hostname" class="form-control" value="<?php echo $source['hostname']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="name" class="col-lg-3 control-label">Channel</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" name="channel" id="channel" class="form-control" value="<?php echo $source['channel']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-12">                                      
-                                    <div class="pull-right">
-                                        <button type="submit" class="btn btn-success">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </section>
             </div>
