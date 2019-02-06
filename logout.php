@@ -10,4 +10,4 @@ include('inc/functions.php');
 
 session_destroy();
 
-go($site['url'].'/members/index');
+go($site['url'].'/index');
