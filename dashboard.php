@@ -214,7 +214,7 @@ desired effect
 			}
 		?>
         
-        <?php  function home(){ ?>
+        <?php  function home() { ?>
         	<?php global $account_details, $site; ?>
             <div class="content-wrapper">
 				
@@ -234,7 +234,7 @@ desired effect
             </div>
         <?php } ?>
 
-        <?php  function headends(){ ?>
+        <?php function headends() { ?>
             <?php global $account_details, $site; ?>
             <div class="content-wrapper">
                 
@@ -321,7 +321,7 @@ desired effect
             </div>
         <?php } ?>
 
-        <?php function headend(){ ?>
+        <?php function headend() { ?>
             <?php global $account_details, $site; ?>
             <?php $headend_id = get('headend_id'); ?>
             <?php $headend = get_site($headend_id); ?>
