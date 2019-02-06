@@ -324,7 +324,7 @@ desired effect
         <?php function headend() { ?>
             <?php global $account_details, $site; ?>
             <?php $headend_id = get('headend_id'); ?>
-            <?php $headend = get_site($headend_id); ?>
+            <?php $headend = get_headend($headend_id); ?>
             
             <!-- <meta http-equiv="refresh" content="30" > -->
             
