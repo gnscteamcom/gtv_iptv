@@ -402,8 +402,6 @@ function show_sources($headend_id) {
 
 	$query = "SELECT * FROM `sources` WHERE `headend_id` = '".$headend_id."' ORDER BY `name` ASC";
 	$result = mysql_query($query) or die(mysql_error());
-	// $data['query'] = $query;
-	// echo print_r($data);
 	while($row = mysql_fetch_array($result)){
 		$data['id']							= $row['id'];
 		$data['headend_id']					= $row['headend_id'];
@@ -450,7 +448,7 @@ function get_sources($headend_id)
 	// get asic miners
 	$query = "SELECT * FROM `sources` WHERE `headend_id` = '".$headend_id."' ";
 	$result = mysql_query($query) or die(mysql_error());
-	$count = 0
+	$count = 0;
 	while($row = mysql_fetch_array($result)){
 		$data[$count]['id']							= $row['id'];
 		$data[$count]['headend_id']					= $row['headend_id'];
