@@ -970,27 +970,54 @@ desired effect
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-
-                                                        <dl class="dl-horizontal">
-                                                            <dt>Name</dt>
-                                                            <dd><?php echo $source['name']; ?></dd>
-                                                            
-                                                            <dt>Type</dt>
-                                                            <dd><?php echo ucfirst($source['type']); ?></dd>
-
-                                                            <dt>Make</dt>
-                                                            <dd><?php echo $source['make'].' '.$source['model']; ?></dd>
-
-                                                            <dt>IP Address</dt>
-                                                            <dd><?php echo $source['ip_address']; ?></dd>
-
-                                                            <dt>Hostname</dt>
-                                                            <dd><?php echo $source['hostname']; ?></dd>
-
-                                                            <dt>Channel</dt>
-                                                            <dd><?php echo ucwords(str_replace("_", " ", $source['assigned_channel'])); ?></dd>
-                                                        </dl>
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label for="name" class="col-lg-3 control-label">Type</label>
+                                                                    <div class="col-lg-9">
+                                                                        <input type="text" name="type" id="type" class="form-control" value="<?php echo $source['type']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label for="name" class="col-lg-3 control-label">Make</label>
+                                                                    <div class="col-lg-9">
+                                                                        <input type="text" name="make" id="make" class="form-control" value="<?php echo $source['make']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label for="name" class="col-lg-3 control-label">Model</label>
+                                                                    <div class="col-lg-9">
+                                                                        <input type="text" name="model" id="model" class="form-control" value="<?php echo $source['model']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label for="name" class="col-lg-3 control-label">IP Address</label>
+                                                                    <div class="col-lg-9">
+                                                                        <input type="text" name="ip_address" id="ip_address" class="form-control" value="<?php echo $source['ip_address']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label for="name" class="col-lg-3 control-label">Hostname</label>
+                                                                    <div class="col-lg-9">
+                                                                        <input type="text" name="hostname" id="hostname" class="form-control" value="<?php echo $source['hostname']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-6">
+                                                                    <label for="name" class="col-lg-3 control-label">Channel</label>
+                                                                    <div class="col-lg-9">
+                                                                        <input type="text" name="channel" id="channel" class="form-control" value="<?php echo $source['channel']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </form>
                                                     </div>
                                                 </div>
