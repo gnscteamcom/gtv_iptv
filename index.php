@@ -43,7 +43,7 @@ include('inc/global_vars.php');
                     <p class="login-box-msg">Sign in</p>
                     <form action="login.php" method="post">
                         <div class="form-group has-feedback">
-                            <input type="email" class="form-control" placeholder="Email" name="email" id="email">
+                            <input type="email" class="form-control" placeholder="Email" name="username" id="username">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
