@@ -21,7 +21,7 @@ $now 								= time();
 $username 							= post('username');
 $password							= post('password');
 
-$query = "SELECT `id` FROM `users` WHERE `username` = '".$username."' AND `password` = '".$password."' ";
+$query = "SELECT `id` FROM `users` WHERE `email` = '".$username."' AND `password` = '".$password."' ";
 
 $result = mysql_query($query) or die(mysql_error());
 $found = mysql_num_rows($result);
