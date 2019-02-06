@@ -330,20 +330,13 @@ function show_headends() {
 						</span>
 					</th>
 					<th>
-						'.($data['unifi']['status_raw']=='not_configured' ? 
-							$data['unifi']['status'] : 
-							$data['unifi']['status'].' <span style="font-weight:normal;"><small>(Uptime: '.$data['unifi']['router_uptime'].')</small></span> <br>
-							<span style="font-weight:normal;">
-								<b>WAN IP:</b> '.$data['unifi']['router_wan_ip'].' <small>(<i class="fas fa-download"></i> '.$data['unifi']['router_wan_rx'].' | <i class="fas fa-upload"></i>'.$data['unifi']['router_wan_tx'].')</small><br>
-								<b>LAN IP:</b> '.$data['unifi']['router_lan_ip'].'
-							</span>
-						').'
+						'.$data['controller_ip_address'].'
 					</th>
 					<th>
 						'.$data['sources'].'
 					</th>
 					
-					<td>
+					<td class="pull_right">
 						<a title="Overview" class="btn btn-primary btn-flat" href="?c=site&site_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
 						<a title="Delete Site" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=site_delete&site_id='.$data['id'].'"><i class="fa fa-times"></i></a>
 					</td>
