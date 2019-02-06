@@ -1,7 +1,7 @@
 <?php
 
 // site vars
-$site['url']					= 'https://genexnetworks.net/gtv_portal/';
+$site['url']					= 'https://genexnetworks.net/gtv_portal';
 $site['title']					= 'GTV Portal';
 $site['copyright']				= 'Written by GENEX NETWORKS LLC T/A '.$site['title'].'. <br>Registered in Colorado, USA: 20151830790.';
 

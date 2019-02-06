@@ -181,6 +181,26 @@ desired effect
 				case "test":
 					test();
 					break;
+
+                // headends
+                case "headends":
+                    headends();
+                    break;
+
+                // headend
+                case "headend":
+                    headend();
+                    break;
+
+                // sources
+                case "sources":
+                    sources();
+                    break;
+
+                // source
+                case "source":
+                    source();
+                    break;
 					
 				// my account
 				case "my_account":
