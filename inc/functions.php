@@ -413,6 +413,7 @@ function show_sources($headend_id) {
 		$data['model']						= stripslashes($row['model']);
 		$data['assigned_channel']			= stripslashes($row['assigned_channel']);
 		$data['status']						= stripslashes($row['status']);
+		$data['hostname']					= stripslashes($row['hostname']);
 
 
 		echo '
@@ -422,6 +423,9 @@ function show_sources($headend_id) {
 				</th>
 				<th>
 					'.($data['status'] == 'online' ? '<font color="green">Online</font>' : '<font color="red">Pffline</font>').'
+				</th>
+				<th>
+					'.ucfirst($data['hostname']).'
 				</th>
 				<th>
 					'.ucfirst($data['type']).'
