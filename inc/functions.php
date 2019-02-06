@@ -336,9 +336,9 @@ function show_headends() {
 						'.$data['sources'].'
 					</th>
 					
-					<td class="pull_right">
-						<a title="Overview" class="btn btn-primary btn-flat" href="?c=site&site_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
-						<a title="Delete Site" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=site_delete&site_id='.$data['id'].'"><i class="fa fa-times"></i></a>
+					<td class="pull-right">
+						<a title="Overview" class="btn btn-primary btn-flat" href="?c=headend&headend_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
+						<a title="Delete Headend" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=headend_delete&headend_id='.$data['id'].'"><i class="fa fa-times"></i></a>
 					</td>
 				</tr>
 			';
