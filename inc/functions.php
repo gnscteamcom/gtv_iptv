@@ -421,7 +421,7 @@ function show_sources($headend_id) {
 					'.$data['name'].'
 				</th>
 				<th>
-					'.($data['status'] == 'online' ? '<span color="green">Online</span>' : '<span color="red">Pffline</span>').'
+					'.($data['status'] == 'online' ? '<font color="green">Online</font>' : '<font color="red">Pffline</font>').'
 				</th>
 				<th>
 					'.$data['type'].'
