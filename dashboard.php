@@ -944,7 +944,12 @@ desired effect
                     <div class="row">
                         <div class="col-md-12">
                             <div class="nav-tabs-custom">
-                                <div class="row">
+                                <ul class="nav nav-tabs">
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div class="row">
                                             <form action="actions.php?a=source_update&source_id=<?php echo $source_id; ?>" method="post" class="form-horizontal">
                                                 <div class="row">
                                                     <div class="form-group col-lg-12">
@@ -1018,6 +1023,8 @@ desired effect
                                                 </div>
                                             </form>
                                         </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
