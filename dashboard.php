@@ -952,16 +952,14 @@ desired effect
                                     <?php } ?>
                                 </ul>
                                 <div class="tab-content">
-
                                     <div class="tab-pane active" id="tab_1">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="box box-solid">
-                                                    
                                                     <div class="box-body">
                                                         <form action="actions.php?a=source_update&source_id=<?php echo $source_id; ?>" method="post" class="form-horizontal">
                                                             <div class="row">
-                                                                <div class="form-group col-lg-6">
+                                                                <div class="form-group col-lg-12">
                                                                     <label for="name" class="col-lg-3 control-label">Name</label>
                                                                     <div class="col-lg-9">
                                                                         <input type="text" name="name" id="name" class="form-control" value="<?php echo $source['name']; ?>">
