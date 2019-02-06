@@ -430,7 +430,7 @@ function show_sources($headend_id) {
 					'.$data['make'].' / '.$data['model'].'
 				</th>
 				<th>
-					'.ucfirst(str_replace("_", " ", $data['assigned_channel'])).'
+					'.ucwords(str_replace("_", " ", $data['assigned_channel'])).'
 				</th>
 				<td class="pull-right">
 					<a title="Overview" class="btn btn-primary btn-flat" href="?c=source&source_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
