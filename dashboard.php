@@ -138,6 +138,28 @@ desired effect
                         	<span>Dashboard</span>
                         </a>
                     </li>
+
+                    <?php if($_GET['c'] == 'headends'){ ?>
+                        <li class="active">
+                    <?php }else{ ?>
+                        <li>
+                    <?php } ?>
+                        <a href="<?php echo $site['url']; ?>/dashboard?c=headends">
+                            <i class="fa fa-tv"></i> 
+                            <span>Headends</span>
+                        </a>
+                    </li>
+
+                    <?php if($_GET['c'] == 'sources'){ ?>
+                        <li class="active">
+                    <?php }else{ ?>
+                        <li>
+                    <?php } ?>
+                        <a href="<?php echo $site['url']; ?>/dashboard?c=sources">
+                            <i class="fa fa-tv"></i> 
+                            <span>Sources</span>
+                        </a>
+                    </li>
                     
 					<?php if($_GET['c'] == 'my_account'){ ?>
                     	<li class="active">
