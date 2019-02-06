@@ -15,13 +15,6 @@ if(empty($_SESSION['account']['id'])){
 // get account details for logged in user
 $account_details 			= account_details($_SESSION['account']['id']);
 
-// check is logged in user has one of the correct product ids from whmcs to use this page.
-$product_check 				= active_product_check( $account_details['product_ids'], $product_ids );
-
-// if above check fails, redirect to another url
-if($product_check == 0 || $product_check == ''){
-	go($site['url'].'?status=error&message=No Products Found');
-}
 ?>
 
 <!DOCTYPE html>

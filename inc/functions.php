@@ -41,46 +41,19 @@ function check_whmcs_status($userid){
 }
 
 function account_details($billing_id){
-	global $whmcs;
-	
-	$postfields["username"] 			= $whmcs['username'];
-	$postfields["password"] 			= $whmcs['password'];
-	$postfields["action"] 			= "getclientsdetails";
-	$postfields["clientid"] 			= $billing_id;	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $whmcs['url']);
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 100);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
-	$data = curl_exec($ch);
-	curl_close($ch);
-	
-	$data = explode(";",$data);
-	foreach ($data AS $temp) {
-	  	$temp = explode("=",$temp);
-	  	$results[$temp[0]] = $temp[1];
+	// get local account data 
+	$query = "SELECT * FROM user_data WHERE user_id = '".$billing_id."' " ;
+	$result = mysql_query($query) or die(mysql_error());
+	while($row = mysql_fetch_array($result)){	
+		$results['email']					= $row['email'];
+		$results['username']				= $row['email'];
+		$results['firstname']				= $row['firstname'];
+		$results['lastname']				= $row['lastname'];
+		$results['account_type']			= $row['account_type'];
+		$results['avatar']					= $row['avatar'];
 	}
-	
-	$results['product_ids']			= get_product_ids($billing_id);
-	
-	$results['products']				= check_products($billing_id);
-	
-	if($results["result"] == "success") {		
-		// get local account data 
-		$query = "SELECT * FROM user_data WHERE user_id = '".$billing_id."' " ;
-		$result = mysql_query($query) or die(mysql_error());
-		while($row = mysql_fetch_array($result)){	
-			$results['account_type']			= $row['account_type'];
-			$results['avatar']				= $row['avatar'];
-		}
 		
-		return $results;
-	} else {
-		// error
-		die("billing API error: unable to access your account data, please contact support");
-	}	
-	
+	return $results;
 }
 
 function check_products($billing_id){
