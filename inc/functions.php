@@ -424,7 +424,7 @@ function show_sources($headend_id) {
 					'.($data['status'] == 'online' ? '<font color="green">Online</font>' : '<font color="red">Pffline</font>').'
 				</th>
 				<th>
-					'.ucfirst($data['hostname']).'
+					'.$data['hostname'].'
 				</th>
 				<th>
 					'.ucfirst($data['type']).'

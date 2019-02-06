@@ -966,7 +966,7 @@ desired effect
                                                             <dd><?php echo $source['name']; ?></dd>
                                                             
                                                             <dt>Type</dt>
-                                                            <dd><?php echo $source['type']; ?></dd>
+                                                            <dd><?php echo ucfirst($source['type']); ?></dd>
 
                                                             <dt>Make</dt>
                                                             <dd><?php echo $source['make'].' '.$source['model']; ?></dd>
@@ -974,8 +974,11 @@ desired effect
                                                             <dt>IP Address</dt>
                                                             <dd><?php echo $source['ip_address']; ?></dd>
 
+                                                            <dt>Hostname</dt>
+                                                            <dd><?php echo $source['hostname']; ?></dd>
+
                                                             <dt>Channel</dt>
-                                                            <dd><?php echo $source['assigned_channel']; ?></dd>
+                                                            <dd><?php echo ucwords(str_replace("_", " ", $source['assigned_channel'])); ?></dd>
                                                         </dl>
                                                     </div>
                                                 </div>
