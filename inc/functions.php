@@ -376,3 +376,95 @@ function show_headends() {
 		unset($data);
 	}
 }
+
+function get_headend($headend_id, $type ='')
+{
+	// get asic miners
+	$query = "SELECT * FROM `headends` WHERE `id` = '".$headend_id."' ";
+	$result = mysql_query($query) or die(mysql_error());
+	while($row = mysql_fetch_array($result)){
+		$data['id']							= $row['id'];
+		$data['user_id']					= $row['user_id'];
+		$data['name']						= stripslashes($row['name']);
+		$data['ip_address']					= stripslashes($row['ip_address']);
+		$data['controller_ip_address']		= stripslashes($row['controller_ip_address']);
+		$data['location']					= stripslashes($row['location']);
+		$data['sources']					= stripslashes($row['sources']);
+		$data['status_raw']					= $row['status_raw'];
+		$data['sources']					= get_sources($headend_id);
+	}
+	
+	return $data;
+}
+
+function show_sources($headend_id) {
+	global $account_details;
+
+	$query = "SELECT * FROM `sources` WHERE `headend_id` = '".$headend_id."' ORDER BY `name` ASC";
+	$result = mysql_query($query) or die(mysql_error());
+	// $data['query'] = $query;
+	// echo print_r($data);
+	while($row = mysql_fetch_array($result)){
+		$data['id']							= $row['id'];
+		$data['headend_id']					= $row['headend_id'];
+		$data['name']						= stripslashes($row['name']);
+		$data['location']					= stripslashes($row['location']);
+		$data['ip_address']					= stripslashes($row['ip_address']);
+		$data['type']						= stripslashes($row['type']);
+		$data['make']						= stripslashes($row['make']);
+		$data['model']						= stripslashes($row['model']);
+		$data['assigned_channel']			= stripslashes($row['assigned_channel']);
+		$data['status']						= stripslashes($row['status']);
+
+
+		echo '
+			<tr>
+				<th>
+					'.$data['name'].'
+				</th>
+				<th>
+					'.$data['status'].'
+				</th>
+				<th>
+					'.$data['type'].'
+				</th>
+				<th>
+					'.$data['make'].' / '.$data['model'].'
+				</th>
+				<th>
+					'.$data['assigned_channel'].'
+				</th>
+				<td class="pull-right">
+					<a title="Overview" class="btn btn-primary btn-flat" href="?c=source&source_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
+					<a title="Delete" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=source_delete&source_id='.$data['id'].'"><i class="fa fa-times"></i></a>
+				</td>
+			</tr>
+		';
+
+		unset($data);
+	}
+}
+
+function get_sources($headend_id)
+{
+	// get asic miners
+	$query = "SELECT * FROM `sources` WHERE `headend_id` = '".$headend_id."' ";
+	$result = mysql_query($query) or die(mysql_error());
+	$count = 0
+	while($row = mysql_fetch_array($result)){
+		$data[$count]['id']							= $row['id'];
+		$data[$count]['headend_id']					= $row['headend_id'];
+		$data[$count]['name']						= stripslashes($row['name']);
+		$data[$count]['location']					= stripslashes($row['location']);
+		$data[$count]['ip_address']					= stripslashes($row['ip_address']);
+		$data[$count]['type']						= stripslashes($row['type']);
+		$data[$count]['make']						= stripslashes($row['make']);
+		$data[$count]['model']						= stripslashes($row['model']);
+		$data[$count]['assigned_channel']			= stripslashes($row['assigned_channel']);
+		$data[$count]['status']						= stripslashes($row['status']);
+
+		$count++;
+	}
+	
+	return $data;
+}
