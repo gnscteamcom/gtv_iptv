@@ -362,6 +362,7 @@ desired effect
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
+                                                    <th>Hostname</th>
                                                     <th>Status</th>
                                                     <th>Type</th>
                                                     <th>Make</th>
