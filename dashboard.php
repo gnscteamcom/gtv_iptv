@@ -145,7 +145,7 @@ desired effect
                         <li>
                     <?php } ?>
                         <a href="<?php echo $site['url']; ?>/dashboard?c=headends">
-                            <i class="fa fa-tv"></i> 
+                            <i class="fa fa-cube"></i> 
                             <span>Headends</span>
                         </a>
                     </li>
@@ -156,7 +156,7 @@ desired effect
                         <li>
                     <?php } ?>
                         <a href="<?php echo $site['url']; ?>/dashboard?c=sources">
-                            <i class="fa fa-tv"></i> 
+                            <i class="fa fa-cubes"></i> 
                             <span>Sources</span>
                         </a>
                     </li>
