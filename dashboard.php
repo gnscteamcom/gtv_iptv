@@ -958,133 +958,24 @@ desired effect
                                             <div class="col-md-3">
                                                 <div class="box box-solid">
                                                     <div class="box-header with-border">
-                                                        <i class="fa fa-text-width"></i>
                                                         <h3 class="box-title">Overview</h3>
                                                     </div><!-- /.box-header -->
                                                     <div class="box-body">
                                                         <dl class="dl-horizontal">
-                                                            <dt>Hardware</dt>
-                                                            <dd><?php echo $data['miner']['hardware']; ?></dd>
+                                                            <dt>Name</dt>
+                                                            <dd><?php echo $source['name']; ?></dd>
                                                             
-                                                            <dt>Software</dt>
-                                                            <dd><?php echo $data['miner']['software_version']; ?></dd>
+                                                            <dt>Type</dt>
+                                                            <dd><?php echo $source['type']; ?></dd>
+
+                                                            <dt>Make</dt>
+                                                            <dd><?php echo $source['make'].' '.$source['model']; ?></dd>
 
                                                             <dt>IP Address</dt>
-                                                            <dd><?php echo $data['miner']['ip_address']; ?></dd>
+                                                            <dd><?php echo $source['ip_address']; ?></dd>
 
-                                                            <dt>Frequency</dt>
-                                                            <dd><?php echo $data['miner']['frequency']; ?></dd>
-
-                                                            <dt>Power</dt>
-                                                            <dd><?php echo $data['miner']['kilowatts']; ?> kW</dd>
-                                                            <dd><?php echo $data['miner']['amps']; ?> AMPs</dd>
-                                                        </dl>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3">
-                                                <div class="box box-solid">
-                                                    <div class="box-header with-border">
-                                                        <i class="fa fa-text-width"></i>
-                                                        <h3 class="box-title">Financial</h3>
-                                                    </div><!-- /.box-header -->
-                                                    <div class="box-body">
-                                                        <dl class="dl-horizontal">
-                                                            <dt>Revenue</dt>
-                                                            <dd>$<?php echo number_format($data['miner']['revenue'], 2); ?></dd>
-                                                            
-                                                            <dt>Power Cost</dt>
-                                                            <dd>$<?php echo number_format( $data['miner']['cost'], 2); ?></dd>
-
-                                                            <dt>Profit</dt>
-                                                            <dd>$<?php echo number_format( $data['miner']['profit'], 2); ?></dd>
-                                                        </dl>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3">
-                                                <div class="box box-solid">
-                                                    <div class="box-header with-border">
-                                                        <i class="fa fa-text-width"></i>
-                                                        <h3 class="box-title">Temps</h3>
-                                                    </div><!-- /.box-header -->
-                                                    <div class="box-body">
-                                                        <dl class="dl-horizontal">
-                                                            <dt>PCB</dt>
-                                                            <dd>
-                                                            <?php if($account_details['temp_setting'] == 'c'){ ?>
-                                                                <?php echo $data['miner']['pcb_temp_1']; ?> °C
-                                                            <?php }else{ ?>
-                                                                <?php echo c_to_f($data['miner']['pcb_temp_1']); ?> °F
-                                                            <?php } ?> / 
-                                                            <?php if($account_details['temp_setting'] == 'c'){ ?>
-                                                                <?php echo $data['miner']['pcb_temp_2']; ?> °C
-                                                            <?php }else{ ?>
-                                                                <?php echo c_to_f($data['miner']['pcb_temp_2']); ?> °F
-                                                            <?php } ?> / 
-                                                            <?php if($account_details['temp_setting'] == 'c'){ ?>
-                                                                <?php echo $data['miner']['pcb_temp_3']; ?> °C
-                                                            <?php }else{ ?>
-                                                                <?php echo c_to_f($data['miner']['pcb_temp_3']); ?> °F
-                                                            <?php } ?>
-                                                            </dd>
-
-                                                            <dt>Chip</dt>
-                                                            <dd>
-                                                            <?php if($account_details['temp_setting'] == 'c'){ ?>
-                                                                <?php echo $data['miner']['chip_temp_1']; ?> °C
-                                                            <?php }else{ ?>
-                                                                <?php echo c_to_f($data['miner']['chip_temp_1']); ?> °F
-                                                            <?php } ?> / 
-                                                            <?php if($account_details['temp_setting'] == 'c'){ ?>
-                                                                <?php echo $data['miner']['chip_temp_2']; ?> °C
-                                                            <?php }else{ ?>
-                                                                <?php echo c_to_f($data['miner']['chip_temp_2']); ?> °F
-                                                            <?php } ?> / 
-                                                            <?php if($account_details['temp_setting'] == 'c'){ ?>
-                                                                <?php echo $data['miner']['chip_temp_3']; ?> °C
-                                                            <?php }else{ ?>
-                                                                <?php echo c_to_f($data['miner']['chip_temp_3']); ?> °F
-                                                            <?php } ?>
-                                                            </dd>
-
-                                                            <dt>Front Fan</dt>
-                                                            <dd>
-                                                                <?php echo number_format($data['miner']['fan_1_speed']); ?> RPM
-                                                            </dd>
-                                                            <dt>Rear Fan</dt>
-                                                            <dd>
-                                                                <?php echo number_format($data['miner']['fan_2_speed']); ?> RPM
-                                                            </dd>
-                                                        </dl>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3">
-                                                <div class="box box-solid">
-                                                    <div class="box-header with-border">
-                                                        <i class="fa fa-text-width"></i>
-                                                        <h3 class="box-title">Mining Stats</h3>
-                                                    </div><!-- /.box-header -->
-                                                    <div class="box-body">
-                                                        <dl class="dl-horizontal">
-                                                            <dt>Currently Mining</dt>
-                                                            <dd><?php if(isset($data['miner']['coin'])){echo $data['miner']['coin'];}else{echo "Not Set";} ?></dd>
-
-                                                            <dt>Algorithm</dt>
-                                                            <dd><?php echo $data['miner']['algorithm']; ?></dd>
-                                                            
-                                                            <dt>Accepted</dt>
-                                                            <dd><?php echo number_format($data['miner']['accepted'], 0); ?></dd>
-
-                                                            <dt>Rejected</dt>
-                                                            <dd><?php echo number_format($data['miner']['rejected'], 0); ?></dd>
-
-                                                            <dt>Hardware Errors</dt>
-                                                            <dd><?php echo number_format($data['miner']['hardware_errors'], 0); ?></dd>
+                                                            <dt>Channel</dt>
+                                                            <dd><?php echo $source['assigned_channel']; ?></dd>
                                                         </dl>
                                                     </div>
                                                 </div>
