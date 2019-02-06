@@ -145,19 +145,8 @@ desired effect
                         <li>
                     <?php } ?>
                         <a href="<?php echo $site['url']; ?>/dashboard?c=headends">
-                            <i class="fa fa-cube"></i> 
+                            <i class="fa fa-bars"></i> 
                             <span>Headends</span>
-                        </a>
-                    </li>
-
-                    <?php if($_GET['c'] == 'sources'){ ?>
-                        <li class="active">
-                    <?php }else{ ?>
-                        <li>
-                    <?php } ?>
-                        <a href="<?php echo $site['url']; ?>/dashboard?c=sources">
-                            <i class="fa fa-cubes"></i> 
-                            <span>Sources</span>
                         </a>
                     </li>
                     
