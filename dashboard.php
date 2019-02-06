@@ -66,7 +66,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-<body class="hold-transition skin-blue layout-boxed sidebar-mini">  
+<body class="hold-transition skin-blue layout-boxed fixed">  
     <div class="wrapper">
         <header class="main-header">
             <a href="<?php echo $site['url']; ?>/dashboard" class="logo">
