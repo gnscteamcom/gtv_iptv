@@ -942,342 +942,78 @@ desired effect
                 
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="nav-tabs-custom">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab_1" data-toggle="tab">Overview</a></li>
-                                    <li><a href="#tab_2" data-toggle="tab">Settings</a></li>
-                                    <?php if(isset($_GET['dev']) && $_GET['dev'] == 'yes'){ ?>
-                                        <li><a href="#tab_5" data-toggle="tab">Dev</a></li>
-                                    <?php } ?>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_1">
-                                        <div class="row">
-                                            <form action="actions.php?a=source_update&source_id=<?php echo $source_id; ?>" method="post" class="form-horizontal">
-                                                <div class="row">
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="name" class="col-lg-3 control-label">Name</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" name="name" id="name" class="form-control" value="<?php echo $source['name']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="name" class="col-lg-3 control-label">Type</label>
-                                                        <div class="col-lg-9">
-                                                            <!-- <input type="text" name="type" id="type" class="form-control" value="<?php echo $source['type']; ?>"> -->
-                                                            <select name="type" id="type" class="form-control" placeholder="United States" required>
-                                                                <option value="" <?php if($source['type']==''){echo'selected';}?>>Select a Type</option>  
-                                                                <option value="streamer" <?php if($source['type']=='streamer'){echo'selected';}?>>Streamer</option>  
-                                                                <option value="capture_card" <?php if($source['type']=='capture_card'){echo'selected';}?>>Capture Card</option>  
-                                                                <option value="tuner_card" <?php if($source['type']=='tuner_card'){echo'selected';}?>>Tuner Card</option>  
-                                                                <option value="stb" <?php if($source['type']=='stb'){echo'selected';}?>>Set Top Box</option> 
-                                                            </select>   
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="name" class="col-lg-3 control-label">Make</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" name="make" id="make" class="form-control" value="<?php echo $source['make']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="name" class="col-lg-3 control-label">Model</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" name="model" id="model" class="form-control" value="<?php echo $source['model']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="name" class="col-lg-3 control-label">IP Address</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" name="ip_address" id="ip_address" class="form-control" value="<?php echo $source['ip_address']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="name" class="col-lg-3 control-label">Hostname</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" name="hostname" id="hostname" class="form-control" value="<?php echo $source['hostname']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="name" class="col-lg-3 control-label">Channel</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" name="channel" id="channel" class="form-control" value="<?php echo $source['channel']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-12">                                      
-                                                        <div class="pull-right">
-                                                            <button type="submit" class="btn btn-success">Save</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane" id="tab_2">
-                                        <form action="actions.php?a=miner_update_owner&site_id=<?php echo $data['site']['id']; ?>&miner_id=<?php echo $miner_id; ?>" method="post" class="form-horizontal">
-                                            <div class="row">
-                                                <div class="form-group col-lg-12">
-                                                    <label for="customer_id" class="col-lg-2 control-label">Assign to Customer</label>
-                                                    <div class="col-lg-10">
-                                                        <?php if(is_array($customers)){ ?>
-                                                            <select id="customer_id" name="customer_id" class="form-control" >
-                                                                <option value="0">Dont assign to client</option>
-                                                                <?php foreach($customers as $customer){ ?>
-                                                                    <option value="<?php echo $customer['id']; ?>" <?php if($customer['id']==$data['miner']['customer_id']){echo 'selected';} ?>><?php echo $customer['first_name'].' '.$customer['last_name'].' ('.$customer['email'].')'; ?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        <?php }else{ ?>
-                                                            No customers added yet.
-                                                        <?php } ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="form-group col-lg-12">                                      
-                                                    <div class="pull-right">
-                                                        <button type="submit" class="btn btn-success">Save</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-
-                                        <hr>
-
-                                        <form action="actions.php?a=miner_update&site_id=<?php echo $data['site']['id']; ?>&miner_id=<?php echo $miner_id; ?>" method="post" class="form-horizontal">
-                                            <div class="row">
-                                                <div class="form-group col-lg-4">
-                                                    <label for="name" class="col-lg-3 control-label">Name</label>
-                                                    <div class="col-lg-9">
-                                                        <input type="text" name="name" id="name" class="form-control" value="<?php echo $data['miner']['name']; ?>">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-lg-4">
-                                                    <label for="worker_name" class="col-lg-3 control-label">Worker Name</label>
-                                                    <div class="col-lg-9">
-                                                        <input type="text" name="worker_name" id="worker_name" class="form-control" value="<?php echo $data['miner']['worker_name']; ?>">
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="form-group col-lg-4">
-                                                    <label for="ip_address" class="col-lg-3 control-label">IP Address</label>
-                                                    <div class="col-lg-9">
-                                                        <input type="text" name="ip_address" id="ip_address" class="form-control" value="<?php echo $data['miner']['ip_address']; ?>" required data-inputmask="'alias': 'ip'" data-mask>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row">
-                                                <div class="form-group col-lg-6">
-                                                    <label for="username" class="col-lg-2 control-label">Username</label>
-                                                    <div class="col-lg-10">
-                                                        <input type="text" name="username" id="username" class="form-control" value="<?php echo $data['miner']['username']; ?>" readonly>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="form-group col-lg-6">
-                                                    <label for="password" class="col-lg-2 control-label">Password</label>
-                                                    <div class="col-lg-10">
-                                                        <input type="text" name="password" id="password" class="form-control" value="<?php echo $data['miner']['password']; ?>" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="form-group col-lg-3">
-                                                    <label for="location_row" class="col-lg-4 control-label">Location > Row</label>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" name="location_row" id="location_row" class="form-control" value="<?php echo $data['miner']['location_row']; ?>" placeholder="0" required>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="form-group col-lg-3">
-                                                    <label for="location_rack" class="col-lg-4 control-label">Rack</label>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" name="location_rack" id="location_rack" class="form-control" value="<?php echo $data['miner']['location_rack']; ?>" placeholder="0" required>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="form-group col-lg-3">
-                                                    <label for="location_shelf" class="col-lg-4 control-label">Shelf</label>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" name="location_shelf" id="location_shelf" class="form-control" value="<?php echo $data['miner']['location_shelf']; ?>" placeholder="0" required>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="form-group col-lg-3">
-                                                    <label for="location_position" class="col-lg-4 control-label">Position</label>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" name="location_position" id="location_position" class="form-control" value="<?php echo $data['miner']['location_position']; ?>" placeholder="0" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="form-group col-lg-6">
-                                                    <label for="manual_fan_speed" class="col-lg-2 control-label">Fan Speed</label>
-                                                    <div class="col-lg-10">
-                                                        <select id="manual_fan_speed" name="manual_fan_speed" class="form-control" >
-                                                            <?php foreach(range(0, 100) as $fan_speed){
-                                                                echo '<option value="'.$fan_speed.'" '.($data['miner']['manual_fan_speed'] == $fan_speed ? 'selected' : '').'>'.$fan_speed.'%</option>';
-                                                            } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <?php if($data['miner']['type'] == 'asic'){ ?>
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="manual_freq" class="col-lg-1 control-label">Frequency</label>
-                                                        <div class="col-lg-11">
-                                                            <input type="text" name="manual_freq" id="manual_freq" class="form-control" value="<?php echo $data['miner']['manual_freq']; ?>" placeholder="0 = default">
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-                                            </div>
-                                            
-                                            <?php if($data['miner']['type'] == 'asic'){ ?>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="pool_profile_id" class="col-lg-1 control-label">Pool Profile</label>
-                                                        <div class="col-lg-11">
-                                                            <?php if($data['pool_profiles']['status']=='success'){ ?>
-                                                                <select id="pool_profile_id" name="pool_profile_id" class="form-control" >
-                                                                    <option value="0">Select a Pool Profile / No Pool Profile</option>
-                                                                    <?php 
-                                                                        foreach($data['pool_profiles']['data'] as $pool_profile)
-                                                                        {
-                                                                            echo '<option value="'.$pool_profile['id'].'" '.(($pool_profile['id']==$data['miner']['pool_profile_id']) ? 'selected="selected"' : '').'>'.$pool_profile['name'].'</option>';
-                                                                        }
-                                                                    ?>
-                                                                </select>
-                                                            <?php }else{ ?>
-                                                                No Pool Profiles added yet.
-                                                            <?php } ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <?php if($data['miner']['pool_profile_id'] != 0){ ?>
-                                                    <div class="row">
-                                                        <div class="form-group col-lg-12">
-                                                            <label for="pool_2" class="col-lg-1 control-label"></label>
-                                                            <div class="col-lg-11">
-                                                                The following pools are configured via the Pool Profile option above and are therefor disabled at this time. To set the pools one by one, then disable the above Pool Profile.
-                                                            </div>
-                                                        </div>
-                                                    </div>  
-                                                <?php } ?>
-                                                
-                                                <div class="row">
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="pool_0" class="col-lg-1 control-label">Pool 1</label>
-                                                        <div class="col-lg-11">
-                                                            <select id="pool_0" name="pool_0" class="form-control" <?php if($data['miner']['pool_profile_id'] != 0){ echo 'readonly';} ?>>
-                                                                <option value="0">No Pool Selected</option>
-                                                                <?php 
-                                                                    foreach($data['pools'] as $pool)
-                                                                    {
-                                                                        echo '<option value="'.$pool['id'].'" '.($pool['id']==$data['miner']['active_pools']['0'] ? 'selected' : '').'>'.$pool['name'].'</option>';
-                                                                    }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="pool_1" class="col-lg-1 control-label">Pool 2</label>
-                                                        <div class="col-lg-11">
-                                                            <select id="pool_1" name="pool_1" class="form-control" <?php if($data['miner']['pool_profile_id'] != 0){ echo 'readonly';} ?>>>
-                                                                <option value="0">No Pool Selected</option>
-                                                                <?php 
-                                                                    foreach($data['pools'] as $pool)
-                                                                    {
-                                                                        echo '<option value="'.$pool['id'].'" '.($pool['id']==$data['miner']['active_pools']['1'] ? 'selected' : '').'>'.$pool['name'].'</option>';
-                                                                    }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="pool_2" class="col-lg-1 control-label">Pool 3</label>
-                                                        <div class="col-lg-11">
-                                                            <select id="pool_2" name="pool_2" class="form-control" <?php if($data['miner']['pool_profile_id'] != 0){ echo 'readonly';} ?>>>
-                                                                <option value="0">No Pool Selected</option>
-                                                                <?php 
-                                                                    foreach($data['pools'] as $pool)
-                                                                    {
-                                                                        echo '<option value="'.$pool['id'].'" '.($pool['id']==$data['miner']['active_pools']['2'] ? 'selected' : '').' >'.$pool['name'].'</option>';
-                                                                    }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php }else{ ?>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="gpu_miner_software" class="col-lg-1 control-label">Miner Software</label>
-                                                        <div class="col-lg-11">
-                                                            <select id="gpu_miner_software" name="gpu_miner_software" class="form-control" >
-                                                                <?php 
-                                                                    foreach($data['gpu_miners'] as $gpu_miner)
-                                                                    {
-                                                                        echo '<option value="'.$gpu_miner['id'].'" '.(($gpu_miner['folder']==$data['miner']['software_version']) ? 'selected="selected"' : '').'>'.$gpu_miner['name'].' ('.$gpu_miner['folder'].')</option>';
-                                                                    }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="pool_0_url" class="col-lg-1 control-label">Pool Server</label>
-                                                        <div class="col-lg-11">
-                                                            <input type="text" name="pool_0_url" id="pool_0_url" class="form-control" value="<?php echo $data['miner']['pools'][0]['url']; ?>" placeholder="pool.server.com:3333">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-lg-12">
-                                                        <label for="pool_0_user" class="col-lg-1 control-label">Pool Username</label>
-                                                        <div class="col-lg-11">
-                                                            <input type="text" name="pool_0_user" id="pool_0_user" class="form-control" value="<?php echo $data['miner']['pools'][0]['user']; ?>" placeholder="username or crypto wallet address">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php } ?>
-
-                                            
-                                            <div class="row">
-                                                <div class="form-group col-lg-12">                                      
-                                                    <div class="pull-right">
-                                                        <button type="submit" class="btn btn-success">Save</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                        <form action="actions.php?a=source_update&source_id=<?php echo $source_id; ?>" method="post" class="form-horizontal">
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label for="name" class="col-lg-3 control-label">Name</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" name="name" id="name" class="form-control" value="<?php echo $source['name']; ?>">
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="name" class="col-lg-3 control-label">Type</label>
+                                    <div class="col-lg-9">
+                                        <!-- <input type="text" name="type" id="type" class="form-control" value="<?php echo $source['type']; ?>"> -->
+                                        <select name="type" id="type" class="form-control" placeholder="United States" required>
+                                            <option value="" <?php if($source['type']==''){echo'selected';}?>>Select a Type</option>  
+                                            <option value="streamer" <?php if($source['type']=='streamer'){echo'selected';}?>>Streamer</option>  
+                                            <option value="capture_card" <?php if($source['type']=='capture_card'){echo'selected';}?>>Capture Card</option>  
+                                            <option value="tuner_card" <?php if($source['type']=='tuner_card'){echo'selected';}?>>Tuner Card</option>  
+                                            <option value="stb" <?php if($source['type']=='stb'){echo'selected';}?>>Set Top Box</option> 
+                                        </select>   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="name" class="col-lg-3 control-label">Make</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" name="make" id="make" class="form-control" value="<?php echo $source['make']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="name" class="col-lg-3 control-label">Model</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" name="model" id="model" class="form-control" value="<?php echo $source['model']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="name" class="col-lg-3 control-label">IP Address</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" name="ip_address" id="ip_address" class="form-control" value="<?php echo $source['ip_address']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="name" class="col-lg-3 control-label">Hostname</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" name="hostname" id="hostname" class="form-control" value="<?php echo $source['hostname']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="name" class="col-lg-3 control-label">Channel</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" name="channel" id="channel" class="form-control" value="<?php echo $source['channel']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">                                      
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </section>
             </div>
