@@ -354,7 +354,7 @@ desired effect
                 <div id="status_message"></div>
                                 
                 <section class="content-header">
-                    <h1><?php echo $headend['name']; ?> <!-- <small>Optional description</small> --></h1>
+                    <h1>Headend: <?php echo $headend['name']; ?> <!-- <small>Optional description</small> --></h1>
                     <ol class="breadcrumb">
                         <li><a href="<?php echo $site['url']; ?>/dashboard">Dashboard</a></li>
                         <li><a href="<?php echo $site['url']; ?>/dashboard?c=headeneds">Headends</a></li>
@@ -931,7 +931,7 @@ desired effect
                 <div id="status_message"></div>
                                 
                 <section class="content-header">
-                    <h1><?php echo $source['name']; ?> <!-- <small>Optional description</small> --></h1>
+                    <h1>Source: <?php echo $source['name']; ?> <!-- <small>Optional description</small> --></h1>
                     <ol class="breadcrumb">
                         <li><a href="<?php echo $site['url']; ?>/dashboard">Dashboard</a></li>
                         <li><a href="<?php echo $site['url']; ?>/dashboard?c=headeneds">Headends</a></li>
@@ -1020,6 +1020,7 @@ desired effect
                                                 <div class="row">
                                                     <div class="form-group col-lg-12">                                      
                                                         <div class="pull-right">
+                                                            <a href="" class="btn btn-default">Back</button>
                                                             <button type="submit" class="btn btn-success">Save</button>
                                                         </div>
                                                     </div>
