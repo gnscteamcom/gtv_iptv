@@ -213,6 +213,26 @@ desired effect
                 </section>
             </div>
         <?php } ?>
+
+        <?php  function headends(){ ?>
+            <?php global $account_details, $site; ?>
+            <div class="content-wrapper">
+                
+                <div id="status_message"></div>
+                                
+                <section class="content-header">
+                    <h1>Headends <!-- <small>Optional description</small> --></h1>
+                    <ol class="breadcrumb">
+                        <li ><a href="<?php echo $site['url']; ?>/dashboard">Dashboard</a></li>
+                        <li class="active">Headends</li>
+                    </ol>
+                </section>
+    
+                <section class="content">
+                    
+                </section>
+            </div>
+        <?php } ?>
         
         <?php  function my_account(){ ?>
         	<?php global $account_details, $site; ?>
