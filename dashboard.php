@@ -139,6 +139,17 @@ desired effect
                         </a>
                     </li>
 
+                    <?php if($_GET['c'] == 'servers' || $_GET['c'] == 'server'){ ?>
+                        <li class="active">
+                    <?php }else{ ?>
+                        <li>
+                    <?php } ?>
+                        <a href="<?php echo $site['url']; ?>/dashboard?c=servers">
+                            <i class="fa fa-server"></i> 
+                            <span>Servers</span>
+                        </a>
+                    </li>
+
                     <?php if($_GET['c'] == 'headends' || $_GET['c'] == 'headend' || $_GET['c'] == 'sources' || $_GET['c'] == 'source'){ ?>
                         <li class="active">
                     <?php }else{ ?>
@@ -200,6 +211,16 @@ desired effect
                 // source
                 case "source":
                     source();
+                    break;
+
+                // servers
+                case "servers":
+                    servers();
+                    break;
+
+                // server
+                case "server":
+                    server();
                     break;
 					
 				// my account
