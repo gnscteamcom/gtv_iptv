@@ -377,8 +377,7 @@ function show_headends() {
 	}
 }
 
-function get_headend($headend_id, $type ='')
-{
+function get_headend($headend_id) {
 	// get asic miners
 	$query = "SELECT * FROM `headends` WHERE `id` = '".$headend_id."' ";
 	$result = mysql_query($query) or die(mysql_error());
@@ -447,8 +446,7 @@ function show_sources($headend_id) {
 	}
 }
 
-function get_sources($headend_id)
-{
+function get_sources($headend_id) {
 	// get asic miners
 	$query = "SELECT * FROM `sources` WHERE `headend_id` = '".$headend_id."' ";
 	$result = mysql_query($query) or die(mysql_error());
@@ -466,6 +464,28 @@ function get_sources($headend_id)
 		$data[$count]['status']						= stripslashes($row['status']);
 
 		$count++;
+	}
+	
+	return $data;
+}
+
+function get_source($headend_id) {
+	// get asic miners
+	$query = "SELECT * FROM `sources` WHERE `headend_id` = '".$headend_id."' ";
+	$result = mysql_query($query) or die(mysql_error());
+	while($row = mysql_fetch_array($result)){
+		$data['id']							= $row['id'];
+		$data['headend_id']					= $row['headend_id'];
+		$data['name']						= stripslashes($row['name']);
+		$data['location']					= stripslashes($row['location']);
+		$data['ip_address']					= stripslashes($row['ip_address']);
+		$data['type']						= stripslashes($row['type']);
+		$data['make']						= stripslashes($row['make']);
+		$data['model']						= stripslashes($row['model']);
+		$data['assigned_channel']			= stripslashes($row['assigned_channel']);
+		$data['status']						= stripslashes($row['status']);
+		$data['hostname']					= stripslashes($row['hostname']);
+		$data['headend']					= get_headend($data['headend_id']);
 	}
 	
 	return $data;
