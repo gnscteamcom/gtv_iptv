@@ -6,8 +6,8 @@ $site['title']					= 'GTV Portal';
 $site['copyright']				= 'Written by GENEX NETWORKS LLC T/A '.$site['title'].'. <br>Registered in Colorado, USA: 20151830790.';
 
 // logo name vars
-$site['name_long']				= '<b>GTV</b>Portal.com';
-$site['name_short']				= '<b>GTV</b>Rep';
+$site['name_long']				= '<b>GTV</b>Portal';
+$site['name_short']				= '<b>GTV</b>';
 
 // whmcs vars
 $whmcs['url'] 					= "http://clients.deltacolo.com/includes/api.php"; # URL to WHMCS API file
