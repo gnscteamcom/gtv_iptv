@@ -1,6 +1,6 @@
 <?php
 
-function check_whmcs_status($userid){
+function check_whmcs_status($userid) {
 	$postfields["username"] 			= $whmcs['username'];
 	$postfields["password"] 			= $whmcs['password'];
 	$postfields["responsetype"] 		= "json";
@@ -40,7 +40,7 @@ function check_whmcs_status($userid){
 	}
 }
 
-function account_details($billing_id){
+function account_details($billing_id) {
 	// get local account data 
 	$query = "SELECT * FROM `users` WHERE `id` = '".$billing_id."' " ;
 	$result = mysql_query($query) or die(mysql_error());
@@ -57,7 +57,7 @@ function account_details($billing_id){
 	return $results;
 }
 
-function check_products($billing_id){
+function check_products($billing_id) {
 	global $whmcs, $site;
 	
 	$postfields["username"] 			= $whmcs['username'];
@@ -84,7 +84,7 @@ function check_products($billing_id){
 	//$product_status = strtolower($data->products->product[0]->status);
 }
 
-function get_other_user_details($billing_id){
+function get_other_user_details($billing_id) {
 	/*
 	global $whmcs;
 	$postfields["username"] 			= $whmcs['username'];
@@ -171,7 +171,7 @@ function percentage($val1, $val2, $precision) {
 	return $res;
 }
 
-function clean_string($value){
+function clean_string($value) {
     if ( get_magic_quotes_gpc() ){
          $value = stripslashes( $value );
     }
@@ -179,7 +179,7 @@ function clean_string($value){
     return mysql_real_escape_string($value);
 }
 
-function go($link = ''){
+function go($link = '') {
 	header("Location: " . $link);
 	die();
 }
@@ -236,12 +236,12 @@ function debug_die($input) {
 	die(debug($input));
 }
 
-function mysql_disconnect(){
+function mysql_disconnect() {
 	global $connection;
 	mysql_close($connection);
 }
 
-function get_product_ids($uid){
+function get_product_ids($uid) {
 	global $whmcs;
 	$url 						= $whmcs['url'];
 	$postfields["username"] 		= $whmcs['username'];
@@ -274,11 +274,11 @@ function status_message($status, $message){
 	$_SESSION['alert']['message']		= $message;
 }
 
-function active_product_check($needles, $haystack){
+function active_product_check($needles, $haystack) {
    return !!array_intersect($needles, $haystack);
 }
 
-function show_my_profile_products($account_details){
+function show_my_profile_products($account_details) {
 	global $whmcs, $site;
 	
 	foreach($account_details['products'] as $product){
@@ -298,6 +298,88 @@ function show_my_profile_products($account_details){
 	}
 }
 
-function call_remote_content($url){
+function call_remote_content($url) {
 	echo file_get_contents($url);
+}
+
+function show_headends() {
+	global $account_details;
+
+	$query = "SELECT * FROM `headends` WHERE `user_id` = '".$_SESSION['account']['id']."' ORDER BY `name` ASC";
+	$result = mysql_query($query) or die(mysql_error());
+	// $data['query'] = $query;
+	// echo print_r($data);
+	while($row = mysql_fetch_array($result)){
+		$data['id']							= $row['id'];
+		$data['name']						= stripslashes($row['name']);
+		$data['ip_address']					= stripslashes($row['ip_address']);
+		$data['controller_ip_address']		= stripslashes($row['controller_ip_address']);
+		$data['location']					= stripslashes($row['location']);
+		$data['sources']					= stripslashes($row['sources']);
+		$data['status_raw']					= $row['status_raw'];
+
+
+		if($data['status_raw'] == 'online')
+		{
+			echo '
+				<tr>
+					<th>
+						'.$data['name'].' <br>
+						<span style="font-weight:normal;">
+							'.$data['location'].'
+						</span>
+					</th>
+					<th>
+						'.($data['unifi']['status_raw']=='not_configured' ? 
+							$data['unifi']['status'] : 
+							$data['unifi']['status'].' <span style="font-weight:normal;"><small>(Uptime: '.$data['unifi']['router_uptime'].')</small></span> <br>
+							<span style="font-weight:normal;">
+								<b>WAN IP:</b> '.$data['unifi']['router_wan_ip'].' <small>(<i class="fas fa-download"></i> '.$data['unifi']['router_wan_rx'].' | <i class="fas fa-upload"></i>'.$data['unifi']['router_wan_tx'].')</small><br>
+								<b>LAN IP:</b> '.$data['unifi']['router_lan_ip'].'
+							</span>
+						').'
+					</th>
+					<th>
+						'.$data['sources'].'
+					</th>
+					
+					<td>
+						<a title="Overview" class="btn btn-primary btn-flat" href="?c=site&site_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
+						<a title="Delete Site" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=site_delete&site_id='.$data['id'].'"><i class="fa fa-times"></i></a>
+					</td>
+				</tr>
+			';
+		}else{
+			echo '
+				<tr>
+					<th>
+						'.$data['name'].' <br>
+						<span style="font-weight:normal;">
+							'.$data['location'].'
+						</span>
+					</th>
+					<th>
+						'.($data['unifi']['status_raw']=='not_configured' ? 
+							$data['unifi']['status'] : 
+							$data['unifi']['status'].' <span style="font-weight:normal;"><small>(Uptime: '.$data['unifi']['router_uptime'].')</small></span> <br>
+							<span style="font-weight:normal;">
+								<b>WAN IP:</b> '.$data['unifi']['router_wan_ip'].' <small>(<i class="fas fa-download"></i> '.$data['unifi']['router_wan_rx'].' | <i class="fas fa-upload"></i>'.$data['unifi']['router_wan_tx'].')</small><br>
+								<b>LAN IP:</b> '.$data['unifi']['router_lan_ip'].'
+							</span>
+						').'
+					</th>
+					<th>
+						'.$data['sources'].'
+					</th>
+					
+					<td>
+						<a title="Overview" class="btn btn-primary btn-flat" href="?c=site&site_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
+						<a title="Delete Site" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=site_delete&site_id='.$data['id'].'"><i class="fa fa-times"></i></a>
+					</td>
+				</tr>
+			';
+		}
+
+		unset($data);
+	}
 }
