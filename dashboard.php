@@ -262,10 +262,9 @@ desired effect
                                             <thead>
                                                 <tr>
                                                     <th>Headend</th>
-                                                    <th>Location</th>
                                                     <th>Controller</th>
                                                     <th>Sources</th>
-                                                    <th width="60px"></th>
+                                                    <th width="50px"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
