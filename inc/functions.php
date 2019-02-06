@@ -42,7 +42,7 @@ function check_whmcs_status($userid){
 
 function account_details($billing_id){
 	// get local account data 
-	$query = "SELECT * FROM user_data WHERE user_id = '".$billing_id."' " ;
+	$query = "SELECT * FROM `users` WHERE `user_id` = '".$billing_id."' " ;
 	$result = mysql_query($query) or die(mysql_error());
 	while($row = mysql_fetch_array($result)){	
 		$results['email']					= $row['email'];
