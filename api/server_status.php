@@ -18,6 +18,8 @@ header("Content-Type:application/json; charset=utf-8");
 
 $raw = $_POST;
 
+print_r($_POST)
+
 $input = mysql_query("INSERT INTO dump 
 	(`raw`)
 	VALUE
