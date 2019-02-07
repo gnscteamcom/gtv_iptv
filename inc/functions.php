@@ -506,8 +506,8 @@ function show_servers() {
 		$data['cpu_usage']					= stripslashes($row['cpu_usage']);
 		$data['ram_usage']					= stripslashes($row['ram_usage']);
 		$data['disk_usage']					= stripslashes($row['disk_usage']);
-		$data['bandwidth_up']				= stripslashes($row['bandwidth_up']);
-		$data['bandwidth_down']				= stripslashes($row['bandwidth_down']);
+		$data['bandwidth_up']				= stripslashes($row['bandwidth_up'] / 1024);
+		$data['bandwidth_down']				= stripslashes($row['bandwidth_down'] / 1024);
 		$data['uptime']						= stripslashes($row['uptime']);
 		$data['uuid']						= stripslashes($row['uuid']);
 		$data['status']						= stripslashes($row['status']);
@@ -530,8 +530,8 @@ function show_servers() {
 					<strong>DISK:</strong> '.$data['disk_usage'].' <br>
 				</td>
 				<td>
-					<strong>Download:</strong> '.$data['bandwidth_down'] / 1024.' Mbit<br>
-					<strong>Upload:</strong> '.$data['bandwidth_up'] / 1024.' Mbit<br>
+					<strong>Download:</strong> '.$data['bandwidth_down'].' Mbit<br>
+					<strong>Upload:</strong> '.$data['bandwidth_up'].' Mbit<br>
 				</td>
 				
 				<td class="pull-right">
