@@ -513,8 +513,8 @@ function show_servers() {
 		$data['cpu_usage']					= stripslashes($row['cpu_usage']);
 		$data['ram_usage']					= stripslashes($row['ram_usage']);
 		$data['disk_usage']					= stripslashes($row['disk_usage']);
-		$data['bandwidth_up']				= stripslashes($row['bandwidth_up']);
-		$data['bandwidth_down']				= stripslashes($row['bandwidth_down']);
+		$data['bandwidth_up']				= number_format($row['bandwidth_up'] / 125, 2);
+		$data['bandwidth_down']				= number_format($row['bandwidth_down'] / 125, 2);
 		$data['uptime']						= stripslashes($row['uptime']);
 		$data['uuid']						= stripslashes($row['uuid']);
 		$data['status']						= stripslashes($row['status']);
