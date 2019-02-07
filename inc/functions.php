@@ -513,9 +513,9 @@ function show_servers() {
 		
 		$data['cpu_usage']					= str_replace("%", "", stripslashes($row['cpu_usage']));
 		$data['cpu_usage']					= number_format($data['cpu_usage'], 0);
-		if($data['cpu_usage'] < 70){
+		if($data['cpu_usage'] < 60){
 			$data['cpu_usage'] = $data['cpu_usage'];
-		}elseif($data['cpu_usage'] >= 70){
+		}elseif($data['cpu_usage'] >= 60){
 			$data['cpu_usage'] = '<font color="orange">'.$data['cpu_usage'].'</font>';
 		}elseif($data['cpu_usage'] >= 80){
 			$data['cpu_usage'] = '<font color="red">'.$data['cpu_usage'].'</font>';
