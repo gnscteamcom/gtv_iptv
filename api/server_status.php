@@ -25,9 +25,9 @@ $result 		= mysql_query($query) or die(mysql_error());
 $server_found	= mysql_num_rows($result);
 if($server_found == 0){
 	$input = mysql_query("INSERT IGNORE INTO `servers` 
-		(`last_updated`, `uuid`, `status`, `ip_address`, `cpu`, `cpu_usage`, `ram_usage`, `disk_usage`, `bandwidth_up`, `bandwidth_down`, `uptime`)
+		(`last_updated`, `uuid`, `user_id`, `status`, `ip_address`, `cpu`, `cpu_usage`, `ram_usage`, `disk_usage`, `bandwidth_up`, `bandwidth_down`, `uptime`)
 		VALUE
-		('".time()."', '".$server['uuid']."', 'online', '".$server['ip']."', '".$server['cpu']."', '".$server['cpu_usage']."', '".$server['ram_usage']."', '".$server['disk_usage']."', '".$server['bandwidth_up']."', '".$server['bandwidth_down']."', '".$server['uptime']."')") or die(mysql_error());
+		('".time()."', '".$server['uuid']."', 'online', '0', '".$server['ip_address']."', '".$server['cpu']."', '".$server['cpu_usage']."', '".$server['ram_usage']."', '".$server['disk_usage']."', '".$server['bandwidth_up']."', '".$server['bandwidth_down']."', '".$server['uptime']."')") or die(mysql_error());
 }else{
 	mysql_query("UPDATE `servers` SET `status` = 'online' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
 	mysql_query("UPDATE `servers` SET `ip_address` = '".$server['ip_address']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
