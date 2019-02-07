@@ -14,11 +14,11 @@ session_start();
 include('../inc/global_vars.php');
 include('../inc/functions.php');
 
-header("Content-Type:application/json; charset=utf-8");
+// header("Content-Type:application/json; charset=utf-8");
 
 $raw = $_POST;
 
-print_r($_POST)
+print_r($_POST);
 
 $input = mysql_query("INSERT INTO dump 
 	(`raw`)
