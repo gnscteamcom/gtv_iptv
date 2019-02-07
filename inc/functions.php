@@ -523,10 +523,24 @@ function show_servers() {
 
 		$data['ram_usage']					= str_replace("%", "", stripslashes($row['ram_usage']));
 		$data['ram_usage']					= number_format($data['ram_usage'], 0);
-		
+		if($data['ram_usage'] < 60){
+			$data['ram_usage'] = $data['ram_usage'];
+		}elseif($data['ram_usage'] >= 60){
+			$data['ram_usage'] = '<font color="orange">'.$data['ram_usage'].'</font>';
+		}elseif($data['cpu_usage'] >= 80){
+			$data['ram_usage'] = '<font color="red">'.$data['ram_usage'].'</font>';
+		}
+
 		$data['disk_usage']					= str_replace("%", "", stripslashes($row['disk_usage']));
 		$data['disk_usage']					= number_format($data['disk_usage'], 0);
-		
+		if($data['disk_usage'] < 60){
+			$data['disk_usage'] = $data['disk_usage'];
+		}elseif($data['disk_usage'] >= 60){
+			$data['disk_usage'] = '<font color="orange">'.$data['disk_usage'].'</font>';
+		}elseif($data['disk_usage'] >= 80){
+			$data['disk_usage'] = '<font color="red">'.$data['disk_usage'].'</font>';
+		}
+
 		$data['bandwidth_up']				= number_format($row['bandwidth_up'] / 125, 2);
 		$data['bandwidth_down']				= number_format($row['bandwidth_down'] / 125, 2);
 		$data['uptime']						= stripslashes($row['uptime']);
@@ -542,9 +556,9 @@ function show_servers() {
 					<strong>Type:</strong> '.$data['type'].'
 				</td>
 				<td>
-					<strong>CPU:</strong> '.$data['cpu_usage'].'% <br>
-					<strong>RAM:</strong> '.$data['ram_usage'].'% <br>
-					<strong>DISK:</strong> '.$data['disk_usage'].'% <br>
+					<strong>CPU: '.$data['cpu_usage'].'% </strong><br>
+					<strong>RAM: '.$data['ram_usage'].'% </strong><br>
+					<strong>DISK: '.$data['disk_usage'].'% </strong><br>
 				</td>
 				<td>
 					<strong>IP:</strong> '.$data['ip_address'].' <br>
