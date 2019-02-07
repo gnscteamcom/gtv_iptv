@@ -10,13 +10,14 @@ UPTIME="$(awk '{print $1}' /proc/uptime)";
 SSHPORT="$(sshd -T | head -n 1 | awk '{print $2}')";
 
 # cpu
-CPU="$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}')";
+CPU=$(lscpu | grep "Model name:" | sed -r 's/Model name:\s{1,}//g');
+CPU_USAGE="$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}')";
 
 # memory
-RAM="$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*100/$2 }')";
+RAM_USAGE="$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }' | sed 's/ //g')";
 
 # hard drive
-DISK="$(df -h | awk '$NF=="/"{printf "%s\t\t", $5}')";
+DISK_USAGE="$(df -h | awk '$NF=="/"{printf "%s", $5}')";
 
 # network / bandwidth stats
 IPADDRESS="$(hostname -I | sed "s/ //g")";
@@ -36,6 +37,7 @@ RKBPS=`expr $RBPS / 1024`
 TMBPS=`expr $TKBPS / 1024`
 RMBPS=`expr $RKBPS / 1024`
 
-JSON='{ "uuid": "'$UUID'","uptime": "'$UPTIME'", "cpu": "'$CPU'", "ram": "'$RAM'", "disk": "'$DISK'", "ip": "'$IPADDRESS'", "bandwidth_down": "'$RBPS'", "bandwidth_up": "'$TBPS'" }'
+curl -d '{ "uuid": "'$UUID'","uptime": "'$UPTIME'", "cpu": "n_a", "cpu_usage": "'$CPU_USAGE'", "ram_usage": "'$RAM_USAGE'", "disk_usage": "'$DISK_USAGE'", "ip_address": "'$IPADDRESS'", "bandwidth_down": "'$RBPS'", "bandwidth_up": "'$TBPS'" }' -H "Content-Type: application/json" -X POST https://genexnetworks.net/gtv_portal/api/server_status.php
 
-curl -d "${$JSON}" -H "Content-Type: application/json" -X POST https://genexnetworks.net/gtv_portal/api/server_status.php
+echo "Make sure you claim your server by using the following access code."
+echo "Access Code: $UUID"
