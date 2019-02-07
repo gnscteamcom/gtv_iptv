@@ -528,7 +528,7 @@ function show_servers() {
 					<strong>Type:</strong> '.$data['type'].'
 				</td>
 				<td>
-					<strong>UUID:</strong> '.$data['uuid'].' <br>
+					<strong>IP:</strong> '.$data['ip_address'].' <br>
 					<strong>Host:</strong> '.$data['hostname'].'
 				</td>
 				<td>
@@ -537,7 +537,6 @@ function show_servers() {
 					<strong>DISK:</strong> '.$data['disk_usage'].' <br>
 				</td>
 				<td>
-					<strong>IP:</strong> '.$data['ip_address'].' <br>
 					<strong>Download:</strong> '.$data['bandwidth_down'].' Mbit<br>
 					<strong>Upload:</strong> '.$data['bandwidth_up'].' Mbit<br>
 				</td>
