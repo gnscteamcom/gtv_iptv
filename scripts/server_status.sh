@@ -38,4 +38,4 @@ RMBPS=`expr $RKBPS / 1024`
 
 JSON='{ "uuid": "'$UUID'","uptime": "'$UPTIME'", "cpu": "'$CPU'", "ram": "'$RAM'", "disk": "'$DISK'", "ip": "'$IPADDRESS'", "bandwidth_down": "'$RBPS'", "bandwidth_up": "'$TBPS'" }'
 
-curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data '{ "uuid": "'$UUID'","uptime": "'$UPTIME'", "cpu": "'$CPU'", "ram": "'$RAM'", "disk": "'$DISK'", "ip": "'$IPADDRESS'", "bandwidth_down": "'$RBPS'", "bandwidth_up": "'$TBPS'" }' "https://genexnetworks.net/gtv_portal/api/server_status.php"
+curl -d '$JSON' -H "Content-Type: application/json" -X POST https://genexnetworks.net/gtv_portal/api/server_status.php
