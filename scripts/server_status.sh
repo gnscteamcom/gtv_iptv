@@ -26,8 +26,8 @@ RAM_USAGE="$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }' | sed 's/ //g')"
 DISK_USAGE="$(df -h | awk '$NF=="/"{printf "%s", $5}')";
 
 # network / bandwidth stats
-# IPADDRESS="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')";
-IPADDRESS="$(hostname -i)";
+IPADDRESS="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')";
+# IPADDRESS="$(hostname -i)";
 
 NIC="$(ip route get 8.8.8.8 | sed -nr 's/.*dev ([^\ ]+).*/\1/p')";
 NIC="${NIC##*( )}"
