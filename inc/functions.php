@@ -540,8 +540,9 @@ function show_servers() {
 		$status_time_diff					= time() - $row['last_updated'];
 		if($status_time_diff > 120){
 			$data['status']					= 'offline';
+			$row_background 				= '#eecdcd';
 		}
-		
+
 		$data['type']						= ucfirst($row['type']);
 
 		echo '
