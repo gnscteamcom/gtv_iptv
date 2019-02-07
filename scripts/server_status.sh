@@ -6,6 +6,9 @@ command -v curl >/dev/null 2>&1 || { sudo apt install curl -y; }
 # uuid
 UUID="$(cat /sys/class/dmi/id/product_uuid)"
 
+# hostname
+HOSTNAME=$(hostname);
+
 # uptime
 UPTIME="$(awk '{print $1}' /proc/uptime)";
 
@@ -40,7 +43,7 @@ RKBPS=`expr $RBPS / 1024`
 TMBPS=`expr $TKBPS / 1024`
 RMBPS=`expr $RKBPS / 1024`
 
-curl -d '{ "uuid": "'$UUID'","uptime": "'$UPTIME'", "cpu": "n_a", "cpu_usage": "'$CPU_USAGE'", "ram_usage": "'$RAM_USAGE'", "disk_usage": "'$DISK_USAGE'", "ip_address": "'$IPADDRESS'", "bandwidth_down": "'$RMBPS'", "bandwidth_up": "'$TMBPS'" }' -H "Content-Type: application/json" -X POST https://genexnetworks.net/gtv_portal/api/server_status.php
+curl -d '{ "uuid": "'$UUID'","hostname": "'$HOSTNAME'","uptime": "'$UPTIME'", "cpu": "n_a", "cpu_usage": "'$CPU_USAGE'", "ram_usage": "'$RAM_USAGE'", "disk_usage": "'$DISK_USAGE'", "ip_address": "'$IPADDRESS'", "bandwidth_down": "'$RMBPS'", "bandwidth_up": "'$TMBPS'" }' -H "Content-Type: application/json" -X POST https://genexnetworks.net/gtv_portal/api/server_status.php
 
 echo "Make sure you claim your server by using the following access code."
 echo "Access Code: $UUID"
