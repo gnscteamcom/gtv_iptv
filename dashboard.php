@@ -1064,7 +1064,7 @@ desired effect
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>IP</th>
+                                                    <th></th>
                                                     <th>Stats</th>
                                                     <th>Network</th>
                                                     <th width="100px"></th>

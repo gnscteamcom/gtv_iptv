@@ -518,17 +518,17 @@ function show_servers() {
 		$data['uptime']						= stripslashes($row['uptime']);
 		$data['uuid']						= stripslashes($row['uuid']);
 		$data['status']						= stripslashes($row['status']);
-
+		$data['type']						= ucfirst($row['type']);
 
 		echo '
 			<tr>
 				<td>
-					<strong>'.($data['status']=='online' ? '<font color="green">Online</font>' : '<font color="red">Offline</font>').'</strong> <br>
+					<strong>Status:</strong> '.($data['status']=='online' ? '<font color="green">Online</font>' : '<font color="red">Offline</font>').' <br>
 					<strong>Name:</strong> '.$data['name'].' <br>
-					<strong>UUID:</strong> '.$data['uuid'].'
+					<strong>Type:</strong> '.$data['type'].'
 				</td>
 				<td>
-					<strong>IP:</strong> '.$data['ip_address'].' <br>
+					<strong>UUID:</strong> '.$data['uuid'].' <br>
 					<strong>Host:</strong> '.$data['hostname'].'
 				</td>
 				<td>
@@ -537,6 +537,7 @@ function show_servers() {
 					<strong>DISK:</strong> '.$data['disk_usage'].' <br>
 				</td>
 				<td>
+					<strong>IP:</strong> '.$data['ip_address'].' <br>
 					<strong>Download:</strong> '.$data['bandwidth_down'].' Mbit<br>
 					<strong>Upload:</strong> '.$data['bandwidth_up'].' Mbit<br>
 				</td>
