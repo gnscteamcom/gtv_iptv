@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # uuid
-UUID="$(dmidecode -s system-uuid)"
+UUID="$(cat /sys/class/dmi/id/product_uuid)"
 
 # uptime
 UPTIME="$(awk '{print $1}' /proc/uptime)";
