@@ -513,31 +513,19 @@ function show_servers() {
 		
 		$data['cpu_usage']					= str_replace("%", "", stripslashes($row['cpu_usage']));
 		$data['cpu_usage']					= number_format($data['cpu_usage'], 0);
-		if($data['cpu_usage'] < 60){
-			$data['cpu_usage'] = $data['cpu_usage'];
-		}elseif($data['cpu_usage'] >= 60){
-			$data['cpu_usage'] = '<font color="orange">'.$data['cpu_usage'].'</font>';
-		}elseif($data['cpu_usage'] >= 80){
+		if($data['cpu_usage'] >= 80){
 			$data['cpu_usage'] = '<font color="red">'.$data['cpu_usage'].'</font>';
 		}
 
 		$data['ram_usage']					= str_replace("%", "", stripslashes($row['ram_usage']));
 		$data['ram_usage']					= number_format($data['ram_usage'], 0);
-		if($data['ram_usage'] < 60){
-			$data['ram_usage'] = $data['ram_usage'];
-		}elseif($data['ram_usage'] >= 60){
-			$data['ram_usage'] = '<font color="orange">'.$data['ram_usage'].'</font>';
-		}elseif($data['cpu_usage'] >= 80){
+		if($data['ram_usage'] >= 80){
 			$data['ram_usage'] = '<font color="red">'.$data['ram_usage'].'</font>';
 		}
 
 		$data['disk_usage']					= str_replace("%", "", stripslashes($row['disk_usage']));
 		$data['disk_usage']					= number_format($data['disk_usage'], 0);
-		if($data['disk_usage'] < 60){
-			$data['disk_usage'] = $data['disk_usage'];
-		}elseif($data['disk_usage'] >= 60){
-			$data['disk_usage'] = '<font color="orange">'.$data['disk_usage'].'</font>';
-		}elseif($data['disk_usage'] >= 80){
+		if($data['disk_usage'] >= 80){
 			$data['disk_usage'] = '<font color="red">'.$data['disk_usage'].'</font>';
 		}
 
