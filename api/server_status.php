@@ -16,10 +16,7 @@ include('../inc/functions.php');
 
 // header("Content-Type:application/json; charset=utf-8");
 
-$rest_json = file_get_contents("php://input");
-$_POST = json_decode($rest_json, true);
-
-$raw = $_POST;
+$raw = file_get_contents("php://input");
 
 $input = mysql_query("INSERT INTO dump 
 	(`raw`)
