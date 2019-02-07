@@ -20,6 +20,8 @@ $raw = $_POST;
 
 print_r($_POST);
 
+die();
+
 $input = mysql_query("INSERT INTO dump 
 	(`raw`)
 	VALUE
