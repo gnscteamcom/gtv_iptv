@@ -29,13 +29,14 @@ if($server_found == 0){
 		VALUE
 		('".time()."', '".$server['uuid']."', 'online', '0', '".$server['ip_address']."', '".$server['cpu']."', '".$server['cpu_usage']."', '".$server['ram_usage']."', '".$server['disk_usage']."', '".$server['bandwidth_up']."', '".$server['bandwidth_down']."', '".$server['uptime']."')") or die(mysql_error());
 }else{
-	mysql_query("UPDATE `servers` SET `status` = 'online' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `ip_address` = '".$server['ip_address']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `cpu` = '".$server['cpu']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `cpu_usage` = '".$server['cpu_usage']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `ram_usage` = '".$server['ram_usage']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `disk_usage` = '".$server['disk_usage']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `bandwidth_up` = '".$server['bandwidth_up']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `bandwidth_down` = '".$server['bandwidth_down']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
-	mysql_query("UPDATE `servers` SET `uptime` = '".$server['uptime']."' WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `last_updated` = '".time()."' 						WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `status` = 'online' 									WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `ip_address` = '".$server['ip_address']."' 			WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `cpu` = '".$server['cpu']."' 							WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `cpu_usage` = '".$server['cpu_usage']."' 				WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `ram_usage` = '".$server['ram_usage']."' 				WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `disk_usage` = '".$server['disk_usage']."' 			WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `bandwidth_up` = '".$server['bandwidth_up']."' 		WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `bandwidth_down` = '".$server['bandwidth_down']."' 	WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
+	mysql_query("UPDATE `servers` SET `uptime` = '".$server['uptime']."' 					WHERE `uuid` = '".$server['uuid']."' ") or die(mysql_error());
 }
