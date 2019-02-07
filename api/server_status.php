@@ -16,7 +16,8 @@ include('../inc/functions.php');
 
 // header("Content-Type:application/json; charset=utf-8");
 
-$raw = $_POST;
+$rest_json = file_get_contents("php://input");
+$_POST = json_decode($rest_json, true);
 
 print_r($_POST);
 
