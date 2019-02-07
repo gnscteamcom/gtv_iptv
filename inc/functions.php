@@ -515,18 +515,21 @@ function show_servers() {
 		$data['cpu_usage']					= number_format($data['cpu_usage'], 0);
 		if($data['cpu_usage'] >= 80){
 			$data['cpu_usage'] = '<font color="red">'.$data['cpu_usage'].'</font>';
+			$row_background = '#eecdcd';
 		}
 
 		$data['ram_usage']					= str_replace("%", "", stripslashes($row['ram_usage']));
 		$data['ram_usage']					= number_format($data['ram_usage'], 0);
 		if($data['ram_usage'] >= 80){
 			$data['ram_usage'] = '<font color="red">'.$data['ram_usage'].'</font>';
+			$row_background = '#eecdcd';
 		}
 
 		$data['disk_usage']					= str_replace("%", "", stripslashes($row['disk_usage']));
 		$data['disk_usage']					= number_format($data['disk_usage'], 0);
 		if($data['disk_usage'] >= 80){
 			$data['disk_usage'] = '<font color="red">'.$data['disk_usage'].'</font>';
+			$row_background = '#eecdcd';
 		}
 
 		$data['bandwidth_up']				= number_format($row['bandwidth_up'] / 125, 2);
@@ -537,7 +540,7 @@ function show_servers() {
 		$data['type']						= ucfirst($row['type']);
 
 		echo '
-			<tr>
+			<tr bgcolor="'.$row_background.'">
 				<td>
 					<strong>Status:</strong> '.($data['status']=='online' ? '<font color="green">Online</font>' : '<font color="red">Offline</font>').' <br>
 					<strong>Name:</strong> '.$data['name'].' <br>
