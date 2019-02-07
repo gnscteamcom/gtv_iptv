@@ -4,8 +4,3 @@ $raw = file_get_contents("http://iptv.genexnetworks.net:10810/player_api.php?use
 
 echo $raw;
 
-$json = json_decode($raw, true);
-
-foreach ( $json as $stream ) {
-	print_r($stream);
-}
