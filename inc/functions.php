@@ -553,11 +553,6 @@ function show_servers() {
 					<strong>Type:</strong> '.$data['type'].'
 				</td>
 				<td>
-					<strong>CPU: '.$data['cpu_usage'].'% </strong><br>
-					<strong>RAM: '.$data['ram_usage'].'% </strong><br>
-					<strong>DISK: '.$data['disk_usage'].'% </strong><br>
-				</td>
-				<td>
 					<strong>IP:</strong> '.$data['ip_address'].' <br>
 					<strong>Host:</strong> '.$data['hostname'].'
 				</td>
@@ -565,7 +560,11 @@ function show_servers() {
 					<strong>Download:</strong> '.$data['bandwidth_down'].' Mbit<br>
 					<strong>Upload:</strong> '.$data['bandwidth_up'].' Mbit<br>
 				</td>
-				
+				<td>
+					<strong>CPU: '.$data['cpu_usage'].'% </strong><br>
+					<strong>RAM: '.$data['ram_usage'].'% </strong><br>
+					<strong>DISK: '.$data['disk_usage'].'% </strong><br>
+				</td>
 				<td class="pull-right">
 					<a title="Overview" class="btn btn-primary btn-flat" href="?c=headend&headend_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
 					<a title="Delete Headend" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=headend_delete&headend_id='.$data['id'].'"><i class="fa fa-times"></i></a>
