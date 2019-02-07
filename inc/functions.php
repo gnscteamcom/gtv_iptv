@@ -537,6 +537,11 @@ function show_servers() {
 		$data['uptime']						= stripslashes($row['uptime']);
 		$data['uuid']						= stripslashes($row['uuid']);
 		$data['status']						= stripslashes($row['status']);
+		$status_time_diff					= time() - $row['last_updated'];
+		if($status_time_diff > 120){
+			$data['status']					= 'offline';
+		}
+		
 		$data['type']						= ucfirst($row['type']);
 
 		echo '
