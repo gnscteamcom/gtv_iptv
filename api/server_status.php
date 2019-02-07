@@ -19,6 +19,8 @@ include('../inc/functions.php');
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
+$raw = $_POST;
+
 $input = mysql_query("INSERT INTO dump 
 	(`raw`)
 	VALUE
