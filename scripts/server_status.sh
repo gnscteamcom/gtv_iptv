@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# check and install curl
+command -v curl >/dev/null 2>&1 || { sudo apt install curl -y; }
+
 # uuid
 UUID="$(cat /sys/class/dmi/id/product_uuid)"
 
