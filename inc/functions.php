@@ -510,7 +510,8 @@ function show_servers() {
 		$data['name']						= stripslashes($row['name']);
 		$data['ip_address']					= stripslashes($row['ip_address']);
 		$data['hostname']					= stripslashes($row['hostname']);
-		$data['cpu_usage']					= number_format(str_replace("%", "", stripslashes($row['cpu_usage']), 2));
+		$data['cpu_usage']					= str_replace("%", "", stripslashes($row['cpu_usage']));
+		$data['cpu_usage']					= number_format($data['cpu_usage'], 2);
 		$data['ram_usage']					= stripslashes($row['ram_usage']);
 		$data['disk_usage']					= stripslashes($row['disk_usage']);
 		$data['bandwidth_up']				= number_format($row['bandwidth_up'] / 125, 2);
