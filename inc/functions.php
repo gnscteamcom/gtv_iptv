@@ -567,6 +567,8 @@ function show_servers() {
 			</tr>
 		';
 
+		$row_background = '';
+
 		unset($data);
 	}
 }
