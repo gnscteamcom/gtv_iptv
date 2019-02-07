@@ -528,13 +528,13 @@ function show_servers() {
 					<strong>Type:</strong> '.$data['type'].'
 				</td>
 				<td>
-					<strong>IP:</strong> '.$data['ip_address'].' <br>
-					<strong>Host:</strong> '.$data['hostname'].'
-				</td>
-				<td>
 					<strong>CPU:</strong> '.$data['cpu_usage'].' <br>
 					<strong>RAM:</strong> '.$data['ram_usage'].' <br>
 					<strong>DISK:</strong> '.$data['disk_usage'].' <br>
+				</td>
+				<td>
+					<strong>IP:</strong> '.$data['ip_address'].' <br>
+					<strong>Host:</strong> '.$data['hostname'].'
 				</td>
 				<td>
 					<strong>Download:</strong> '.$data['bandwidth_down'].' Mbit<br>
