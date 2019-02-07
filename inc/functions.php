@@ -514,23 +514,23 @@ function show_servers() {
 
 		echo '
 			<tr>
-				<th>
-					'.$data['name'].' <br>
-					<span style="font-weight:normal;">
-						UUID: '.$data['uuid'].'
-					</span>
-				</th>
-				<th>
-					'.$data['ip_address'].' <br>
-					<span style="font-weight:normal;">
-						Host: '.$data['hostname'].'
-					</span>
-				</th>
-				<th>
-					CPU: '.$data['cpu_usage'].' <br>
-					RAM: '.$data['ram_usage'].' <br>
-					DISK: '.$data['disk_usage'].' <br>
-				</th>
+				<td>
+					<strong>Name:</strong> '.$data['name'].' <br>
+					<strong>UUID:</strong> '.$data['uuid'].'
+				</td>
+				<td>
+					<strong>IP:</strong> '.$data['ip_address'].' <br>
+					<strong>Host:</strong> '.$data['hostname'].'
+				</td>
+				<td>
+					<strong>CPU:</strong> '.$data['cpu_usage'].' <br>
+					<strong>RAM:</strong> '.$data['ram_usage'].' <br>
+					<strong>DISK:</strong> '.$data['disk_usage'].' <br>
+				</td>
+				<td>
+					<strong>Download:</strong> '.$data['bandwidth_down'].' <br>
+					<strong>Upload:</strong> '.$data['bandwidth_up'].' <br>
+				</td>
 				
 				<td class="pull-right">
 					<a title="Overview" class="btn btn-primary btn-flat" href="?c=headend&headend_id='.$data['id'].'"><i class="fa fa-globe"></i></a>

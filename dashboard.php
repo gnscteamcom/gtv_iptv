@@ -1066,6 +1066,7 @@ desired effect
                                                     <th>Name</th>
                                                     <th>IP</th>
                                                     <th>Stats</th>
+                                                    <th>Network</th>
                                                     <th width="100px"></th>
                                                 </tr>
                                             </thead>
