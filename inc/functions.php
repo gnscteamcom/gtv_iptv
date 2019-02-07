@@ -530,8 +530,8 @@ function show_servers() {
 					<strong>DISK:</strong> '.$data['disk_usage'].' <br>
 				</td>
 				<td>
-					<strong>Download:</strong> '.$data['bandwidth_down'].' Mbit<br>
-					<strong>Upload:</strong> '.$data['bandwidth_up'].' Mbit<br>
+					<strong>Download:</strong> '.$data['bandwidth_down'] / 1024.' Mbit<br>
+					<strong>Upload:</strong> '.$data['bandwidth_up'] / 1024.' Mbit<br>
 				</td>
 				
 				<td class="pull-right">
