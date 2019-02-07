@@ -516,9 +516,9 @@ function show_servers() {
 		echo '
 			<tr>
 				<td>
+					<strong>'.($data['status']=='online' ? '<font color="green">Online</font>' : '<font color="red">Offline</font>').'</strong> <br>
 					<strong>Name:</strong> '.$data['name'].' <br>
-					<strong>UUID:</strong> '.$data['uuid'].' <br>
-					'.($data['status']=='online' ? '<font color="green">Online</font>' : '<font color="red">Offline</font>').'
+					<strong>UUID:</strong> '.$data['uuid'].'
 				</td>
 				<td>
 					<strong>IP:</strong> '.$data['ip_address'].' <br>
