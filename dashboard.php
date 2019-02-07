@@ -274,7 +274,7 @@ desired effect
                         <div class="col-md-12">
                             <div class="nav-tabs-custom">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab_1" data-toggle="tab">Sites</a></li>
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">Headends</a></li>
                                     <li><a href="#tab_2" data-toggle="tab">Add Headend</a></li>
                                 </ul>
                                 <div class="tab-content">
@@ -1032,6 +1032,93 @@ desired effect
                             </div>
                         </div>
                     </div>
+                </section>
+            </div>
+        <?php } ?>
+
+        <?php function servers() { ?>
+            <?php global $account_details, $site; ?>
+            <div class="content-wrapper">
+                
+                <div id="status_message"></div>
+                                
+                <section class="content-header">
+                    <h1>Servers <!-- <small>Optional description</small> --></h1>
+                    <ol class="breadcrumb">
+                        <li ><a href="<?php echo $site['url']; ?>/dashboard">Dashboard</a></li>
+                        <li class="active">Servers</li>
+                    </ol>
+                </section>
+    
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">Servers</a></li>
+                                    <li><a href="#tab_2" data-toggle="tab">Claim Server</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <table id="sites" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>IP</th>
+                                                    <th>Stats</th>
+                                                    <th width="100px"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php show_servers(); ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane" id="tab_2">
+                                        <form action="actions.php?a=headend_add" method="post" class="form-horizontal">
+                                            <div class="row">
+                                                <div class="form-group col-lg-12">
+                                                    <label for="name" class="col-lg-2 control-label">Name</label>
+                                                    <div class="col-lg-10">
+                                                        <input type="text" name="name" id="name" class="form-control" placeholder="Headend X" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-lg-12">
+                                                    <label for="location" class="col-lg-2 control-label">Location</label>
+                                                    <div class="col-lg-10">
+                                                        <input type="text" name="location" id="location" class="form-control" placeholder="70 Monty Drive, Savannah, TN, 38372, United States">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="form-group col-lg-12">
+                                                    <label for="city" class="col-lg-2 control-label">IP Address</label>
+                                                    <div class="col-lg-10">
+                                                        <input type="text" name="ip_address" id="ip_address" class="form-control" placeholder="192.168.1.10" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="row">
+                                                <div class="form-group col-lg-12">
+                                                    <div class="pull-right">
+                                                        <button type="submit" class="btn btn-success">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane" id="tab_3">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
                 </section>
             </div>
         <?php } ?>

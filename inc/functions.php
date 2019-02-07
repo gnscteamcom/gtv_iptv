@@ -490,3 +490,55 @@ function get_source($headend_id) {
 	
 	return $data;
 }
+
+function show_servers() {
+	global $account_details;
+
+	$query = "SELECT * FROM `servers` WHERE `user_id` = '".$_SESSION['account']['id']."' ORDER BY `name` ASC";
+	$result = mysql_query($query) or die(mysql_error());
+	// $data['query'] = $query;
+	// echo print_r($data);
+	while($row = mysql_fetch_array($result)){
+		$data['id']							= $row['id'];
+		$data['name']						= stripslashes($row['name']);
+		$data['ip_address']					= stripslashes($row['ip_address']);
+		$data['hostname']					= stripslashes($row['hostname']);
+		$data['cpu_usage']					= stripslashes($row['cpu_usage']);
+		$data['ram_usage']					= stripslashes($row['ram_usage']);
+		$data['disk_usage']					= stripslashes($row['disk_usage']);
+		$data['bandwidth_up']				= stripslashes($row['bandwidth_down']);
+		$data['uptime']						= stripslashes($row['uptime']);
+		$data['uuid']						= stripslashes($row['uuid']);
+		$data['status']						= stripslashes($row['status']);
+
+
+		echo '
+			<tr>
+				<th>
+					'.$data['name'].' <br>
+					<span style="font-weight:normal;">
+						UUID: '.$data['uuid'].'
+					</span>
+				</th>
+				<th>
+					'.$data['ip_address'].' <br>
+					<span style="font-weight:normal;">
+						Host: '.$data['hostname'].'
+					</span>
+				</th>
+				<th>
+					CPU: '.$data['cpu_usage'].' <br>
+					RAM: '.$data['ram_usage'].' <br>
+					DISK: '.$data['disk_usage'].' <br>
+				</th>
+				
+				<td class="pull-right">
+					<a title="Overview" class="btn btn-primary btn-flat" href="?c=headend&headend_id='.$data['id'].'"><i class="fa fa-globe"></i></a>
+					<a title="Delete Headend" class="btn btn-danger btn-flat" onclick="return confirm(&#039;Are you sure you want to do this?&#039;);" href="actions.php?a=headend_delete&headend_id='.$data['id'].'"><i class="fa fa-times"></i></a>
+				</td>
+			</tr>
+		';
+
+		unset($data);
+	}
+}
