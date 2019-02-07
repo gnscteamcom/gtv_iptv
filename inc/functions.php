@@ -1,5 +1,12 @@
 <?php
 
+function filesize_formatted($path) {
+    $size = filesize($path);
+    $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+    $power = $size > 0 ? floor(log($size, 1024)) : 0;
+    return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+}
+
 function check_whmcs_status($userid) {
 	$postfields["username"] 			= $whmcs['username'];
 	$postfields["password"] 			= $whmcs['password'];
@@ -506,8 +513,8 @@ function show_servers() {
 		$data['cpu_usage']					= stripslashes($row['cpu_usage']);
 		$data['ram_usage']					= stripslashes($row['ram_usage']);
 		$data['disk_usage']					= stripslashes($row['disk_usage']);
-		$data['bandwidth_up']				= stripslashes($row['bandwidth_up']);
-		$data['bandwidth_down']				= stripslashes($row['bandwidth_down']);
+		$data['bandwidth_up']				= filesize_formatted($row['bandwidth_up']);
+		$data['bandwidth_down']				= filesize_formatted($row['bandwidth_down']);
 		$data['uptime']						= stripslashes($row['uptime']);
 		$data['uuid']						= stripslashes($row['uuid']);
 		$data['status']						= stripslashes($row['status']);
